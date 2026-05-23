@@ -1,0 +1,126 @@
+<h2>Notation</h2>
+
+<ul>
+  <li>\(P\): Applied load at the end of the beam</li>
+  <li>\(w\): Distributed load of the beam, or beam weight</li>
+  <li>\(s\): Arc length from root \((s=0)\) to tip \((s=L)\)</li>
+  <li>\(u\): Dummy variable for the distributed load of the beam</li>
+  <li>\(x(s), x(u)\): Horizontal coordinates</li>
+  <li>\(x_L\): Final horizontal tip coordinate, \(x_L=x(L)\)</li>
+</ul>
+
+<p>At small angle of \(\theta\), we get</p>
+
+\[
+\frac{dx}{ds}=\cos\theta
+\quad \text{and} \quad
+\frac{dy}{ds}=\sin\theta
+\]
+
+<p>The curvature of the beam is</p>
+
+\[
+\kappa=\frac{d\theta}{ds}
+\]
+
+<p>Then the moment at arc length \(s\) is</p>
+
+\[
+M(s)=EI\frac{d\theta}{ds}
+\]
+
+<p>Differentiating with respect to \(s\):</p>
+
+\[
+\frac{d^2\theta}{ds^2}
+=
+\frac{1}{EI}\frac{dM}{ds}
+\]
+
+<p>Moment that acts on its own weight from \(s\) to \(L\):</p>
+
+\[
+M_{\text{weight}}
+=
+\int_s^L w[x(u)-x(s)]\,du
+\]
+
+<p>Moment at point load \(P\):</p>
+
+\[
+M_{\text{tip}}
+=
+P[x_L-x(s)]
+\]
+
+<p>Total moment equation is</p>
+
+\[
+M(s)
+=
+\int_s^L w[x(u)-x(s)]\,du
++
+P[x_L-x(s)]
+\]
+
+<p>Differentiate \(M(s)\) with respect to \(s\) using the Leibniz integral rule:</p>
+
+\[
+\frac{dM}{ds}
+=
+\frac{d}{ds}
+\left[
+\int_s^L w[x(u)-x(s)]\,du
+\right]
++
+\frac{d}{ds}
+\left[
+P[x_L-x(s)]
+\right]
+\]
+
+\[
+=
+-w(L-s)\frac{dx}{ds}
+-
+P\frac{dx}{ds}
+\]
+
+\[
+=
+-w(L-s)\cos\theta
+-
+P\cos\theta
+\]
+
+\[
+=
+[-w(L-s)-P]\cos\theta
+\]
+
+<p>Substitute \(\frac{dM}{ds}\) back into \(\frac{d^2\theta}{ds^2}\), we get</p>
+
+\[
+\frac{d^2\theta}{ds^2}
+=
+\frac{1}{EI}
+[-w(L-s)-P]\cos\theta
+\]
+
+<p>The initial conditions are</p>
+
+\[
+\theta(0)=0
+\]
+
+\[
+\left(\frac{d\theta}{ds}\right)_{s=L}=0
+\]
+
+\[
+(\delta_x)_{s=L}=L-x_L
+\]
+
+\[
+(\delta_y)_{s=L}=x_L
+\]
