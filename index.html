@@ -27,9 +27,12 @@
       font-family: "Times New Roman", serif;
       font-size: 18px;
       line-height: 1.7;
-      max-width: 850px;
-      margin: 0px;
-      padding: 0px;
+      margin: 0;
+      padding: 0;
+    }
+
+    ul {
+      margin-top: 0;
     }
 
     li {
@@ -38,20 +41,24 @@
 
     .equation {
       text-align: center;
-      margin: 22px 0;
+      margin: 18px 0;
+    }
+
+    .given {
+      margin-left: 40px;
     }
   </style>
 </head>
 
 <body>
 
-<h2>Notation:</h2>
+<p>Notation:</p>
 
 <ul>
-  <li>\(P\): Applied load at the end of the beam</li>
-  <li>\(w\): Distributed load of the beam, or beam weight</li>
+  <li>\(P\): Apply load at the end of the beam</li>
+  <li>\(w\): Distribution load of the beam, or beam weight</li>
   <li>\(s\): Arc length from root \((s=0)\) to tip \((s=L)\)</li>
-  <li>\(u\): Dummy variable for distributed load of the beam</li>
+  <li>\(u\): Dummy variable for distribution load of the beam</li>
   <li>\(x(s), x(u)\): Horizontal coordinates</li>
   <li>\(x_L\): Final horizontal tip coordinate, \(x_L=x(L)\)</li>
 </ul>
@@ -178,6 +185,82 @@ P\cos\theta
 \]
 </div>
 
+<p>For small angle \(\theta\), then \(\cos\theta=1\)</p>
+
+<div class="equation">
+\[
+\frac{d^2\theta}{ds^2}
+=
+\frac{1}{EI}
+[-w(L-s)-P]
+\]
+</div>
+
+<div class="equation">
+\[
+\frac{d\theta}{ds}
+=
+\frac{1}{EI}
+\int[-wL+ws-P]\,ds
+\]
+</div>
+
+<div class="equation">
+\[
+=
+\int
+\left(
+\frac{w}{EI}s
+-
+\frac{w}{EI}L
+-
+\frac{P}{EI}
+\right)
+ds
+\]
+</div>
+
+<div class="equation">
+\[
+=
+\int(as-b)\,ds
+\]
+</div>
+
+<p>Where</p>
+
+<div class="equation">
+\[
+a=\frac{w}{EI}
+\quad \text{and} \quad
+b=aL+\frac{P}{EI}
+\]
+</div>
+
+<div class="equation">
+\[
+\Rightarrow
+\frac{d\theta}{ds}
+=
+\frac{1}{2}as^2-bs+C_1
+\]
+</div>
+
+<div class="equation">
+\[
+\Leftrightarrow
+\theta(s)
+=
+\frac{1}{6}as^3
+-
+\frac{1}{2}bs^2
++
+C_1s
++
+C_2
+\]
+</div>
+
 <p>The initial conditions are</p>
 
 <div class="equation">
@@ -186,21 +269,125 @@ P\cos\theta
 \]
 </div>
 
+<p>We get</p>
+
+<div class="equation">
+\[
+C_2=0
+\]
+</div>
+
+<p>And</p>
+
 <div class="equation">
 \[
 \left(\frac{d\theta}{ds}\right)_{s=L}=0
 \]
 </div>
 
+<p>We get</p>
+
 <div class="equation">
 \[
-(\delta_x)_{s=L}=L-x_L
+\Rightarrow
+\frac{1}{2}aL^2-bL+C_1=0
 \]
 </div>
 
 <div class="equation">
 \[
-(\delta_y)_{s=L}=x_L
+\Leftrightarrow
+C_1=bL-\frac{1}{2}aL^2
+\]
+</div>
+
+<p>Then</p>
+
+<div class="equation">
+\[
+\theta(s)
+=
+\frac{1}{6}as^3
+-
+\frac{1}{2}bs^2
++
+s\left(
+bL-\frac{1}{2}aL^2
+\right)
+\tag{*}
+\]
+</div>
+
+<p>Given:</p>
+
+<div class="given">
+  <p>\(L=50cm\)</p>
+  <p>\(width=3cm\)</p>
+  <p>\(h=1cm\)</p>
+  <p>\(E=200GPa\)</p>
+  <p>\(w=11.55N\)</p>
+  <p>\(P=150N\)</p>
+</div>
+
+<div class="equation">
+\[
+I
+=
+\frac{1}{12}width \times h^3
+=
+\frac{1}{12}
+\times
+0.03
+\times
+0.01^3
+=
+2.5\times10^{-9}m^4
+\]
+</div>
+
+<div class="equation">
+\[
+EI
+=
+200\times10^9
+\times
+2.5\times10^{-9}
+=
+500Nm^2
+\]
+</div>
+
+<div class="equation">
+\[
+a
+=
+\frac{w}{EI}
+=
+0.0231
+\]
+</div>
+
+<div class="equation">
+\[
+b
+=
+aL+\frac{P}{EI}
+=
+0.31155
+\]
+</div>
+
+<p>Substitute into equation \((*)\), we obtain</p>
+
+<div class="equation">
+\[
+\theta(s)
+=
+0.00385s^3
+-
+0.155775s^2
++
+0.1528875s
 \]
 </div>
 
