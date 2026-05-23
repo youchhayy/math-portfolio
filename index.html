@@ -1,60 +1,120 @@
-<h2>Notation</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <title>Beam Deflection Mathematical Model</title>
+
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"
+    async>
+  </script>
+
+  <style>
+    body {
+      font-family: "Times New Roman", serif;
+      font-size: 18px;
+      line-height: 1.7;
+      max-width: 850px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    .equation {
+      text-align: center;
+      margin: 22px 0;
+    }
+  </style>
+</head>
+
+<body>
+
+<h2>Notation:</h2>
 
 <ul>
   <li>\(P\): Applied load at the end of the beam</li>
   <li>\(w\): Distributed load of the beam, or beam weight</li>
   <li>\(s\): Arc length from root \((s=0)\) to tip \((s=L)\)</li>
-  <li>\(u\): Dummy variable for the distributed load of the beam</li>
+  <li>\(u\): Dummy variable for distributed load of the beam</li>
   <li>\(x(s), x(u)\): Horizontal coordinates</li>
   <li>\(x_L\): Final horizontal tip coordinate, \(x_L=x(L)\)</li>
 </ul>
 
-<p>At small angle of \(\theta\), we get</p>
+<p>At small angle of \(\theta\), we get,</p>
 
+<div class="equation">
 \[
 \frac{dx}{ds}=\cos\theta
 \quad \text{and} \quad
 \frac{dy}{ds}=\sin\theta
 \]
+</div>
 
-<p>The curvature of the beam is</p>
+<p>And the curvature of the beam is</p>
 
+<div class="equation">
 \[
 \kappa=\frac{d\theta}{ds}
 \]
+</div>
 
-<p>Then the moment at arc length \(s\) is</p>
+<p>Then the moment at arc length \(s\),</p>
 
+<div class="equation">
 \[
 M(s)=EI\frac{d\theta}{ds}
 \]
+</div>
 
 <p>Differentiating with respect to \(s\):</p>
 
+<div class="equation">
 \[
 \frac{d^2\theta}{ds^2}
 =
 \frac{1}{EI}\frac{dM}{ds}
 \]
+</div>
 
 <p>Moment that acts on its own weight from \(s\) to \(L\):</p>
 
+<div class="equation">
 \[
 M_{\text{weight}}
 =
 \int_s^L w[x(u)-x(s)]\,du
 \]
+</div>
 
 <p>Moment at point load \(P\):</p>
 
+<div class="equation">
 \[
 M_{\text{tip}}
 =
 P[x_L-x(s)]
 \]
+</div>
 
-<p>Total moment equation is</p>
+<p>Total Moment Equation is</p>
 
+<div class="equation">
 \[
 M(s)
 =
@@ -62,9 +122,11 @@ M(s)
 +
 P[x_L-x(s)]
 \]
+</div>
 
 <p>Differentiate \(M(s)\) with respect to \(s\) using the Leibniz integral rule:</p>
 
+<div class="equation">
 \[
 \frac{dM}{ds}
 =
@@ -78,49 +140,69 @@ P[x_L-x(s)]
 P[x_L-x(s)]
 \right]
 \]
+</div>
 
+<div class="equation">
 \[
 =
 -w(L-s)\frac{dx}{ds}
 -
 P\frac{dx}{ds}
 \]
+</div>
 
+<div class="equation">
 \[
 =
 -w(L-s)\cos\theta
 -
 P\cos\theta
 \]
+</div>
 
+<div class="equation">
 \[
 =
 [-w(L-s)-P]\cos\theta
 \]
+</div>
 
-<p>Substitute \(\frac{dM}{ds}\) back into \(\frac{d^2\theta}{ds^2}\), we get</p>
+<p>Substitute \(\frac{dM}{ds}\) back into \(\frac{d^2\theta}{ds^2}\), we get,</p>
 
+<div class="equation">
 \[
 \frac{d^2\theta}{ds^2}
 =
 \frac{1}{EI}
 [-w(L-s)-P]\cos\theta
 \]
+</div>
 
 <p>The initial conditions are</p>
 
+<div class="equation">
 \[
 \theta(0)=0
 \]
+</div>
 
+<div class="equation">
 \[
 \left(\frac{d\theta}{ds}\right)_{s=L}=0
 \]
+</div>
 
+<div class="equation">
 \[
 (\delta_x)_{s=L}=L-x_L
 \]
+</div>
 
+<div class="equation">
 \[
 (\delta_y)_{s=L}=x_L
 \]
+</div>
+
+</body>
+</html>
